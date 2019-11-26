@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 注册自定义handler，说明它作用的jdbcType和javaType -->
+    <!--<typeHandlers>&lt;!&ndash;jdbcType="CLOB" javaType="String"&ndash;&gt;
+        <typeHandler  handler="com.teligen.datamonitor.util.OracleClobTypeHandler" />
+    </typeHandlers>-->
+   <!-- <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>-->
+</configuration>

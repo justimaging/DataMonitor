@@ -1,0 +1,60 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  profiles:
+    active: oracle
+#  thymeleaf:
+#    enabled: true  #如果使用jsp页面 需要关掉thymeleaf，否则会将jsp作为thymleaf解析
+#    mode: HTML5 #模板的模式，支持 HTML, XML TEXT JAVASCRIPT
+#    encoding: UTF-8 #编码 可不用配置
+#    cache: false #开发配置为false,避免修改模板还要重启服务器
+#    prefix: /WEB-INF/html/ #classpath:/templates/ #配置模板路径，默认是templates，可以不用配置
+#    suffix: .html
+#    servlet:
+#      content-type: text/html
+#  mvc: # 配置JSP
+#    view:
+#      prefix: /WEB-INF/jsp/ # 配置JSP文件位置，默认位置为：src/main/webapp
+#      suffix: .jsp  # 配置JSP文件后缀
+#      view-names: '*' # 配置JSP视图名
+
+#集成jsp https://www.cnblogs.com/qlqwjy/p/10408362.html
+
+#pagehelper分页插件配置
+pagehelper:
+  helperDialect: oracle
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+#显示日志
+logging:
+  level:
+    com.teligen: debug
+## 该配置节点为独立的节点，若将这个配置放在spring的节点下，会导致配置无法被识别
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true #数据库字段转换成驼峰式开启--此配置只对Bean有效，若返回类型为Map时需要配合MybatisConfig类使用
+#  config-location: classpath:mybatis-config.xml
+#  type-handlers-package: com.teligen.datamonitor.util
+#  mapper-locations: classpath:mapper/*.xml #注意：一定要对应mapper映射xml文件的所在路径
+#  type-aliases-package: com.boot.placms.pojo # 注意：对应实体类的路径
+
+#actutor监控配置
+info:
+  head: head
+  body: body
+management:
+  endpoints:
+    web:
+      exposure:
+        #加载所有的端点，默认只加载了info、health
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    #可以关闭指定的端点
+    shutdown:
+      enabled: false
